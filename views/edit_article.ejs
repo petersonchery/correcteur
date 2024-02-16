@@ -1,0 +1,35 @@
+<%- include("partials/header") %>
+
+<% if (locals.article) { %> <!-- Utilisation de locals.article au lieu de locals.articles -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mx-auto mt-4">
+                <div class="card shadow">
+                    <div class="card-header bg-primary">
+                        <h3 class="text-light">Update article</h3>
+                    </div>
+                    <div class="card-body p-4">
+                        <form action="/edit/<%= article._id %>" method="post" id='article-form'>
+                            <div class="mb-3">
+                                <label><input type=text name=title class="form-control form-control-lg" placeholder="New Title" value="<%= article.title %>" required> Title<span style="color: red;">*</span></label>
+                            </div>
+                            <div class="mb-3">
+                                <label><input type=text name=author class="form-control form-control-lg" placeholder="Author" value="<%= article.author %>" required> Author</label>
+                            </div>
+                            <div class="mb-3">
+                                <label><textarea type=text name=content rows="5" cols="50" class="form-control form-control-lg"  placeholder="Type your content here..." required><%= article.content %></textarea> Content<span style="color: red;">*</span></label>
+                            </div>
+                            <div class="card-header bg-primary  text-center">
+                                <button type="submit" name="submit" value="update article" class="btn button-success text-light">Update article</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<% } else { %>
+    <p>No article found...</p> <!-- Message affiché lorsque l'article n'est pas trouvé -->
+<% } %>
+
+<%- include("partials/footer") %>

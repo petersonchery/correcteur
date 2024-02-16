@@ -1,0 +1,40 @@
+<%- include("partials/header") %>
+
+<% if (locals.article){ %>
+    <div class="container">
+        <div class="row d-flex justify-content-center align-items-center flex-wrap mt-5" id=<%= article._id %>>
+            <a href="/blog/<%= article.id %>" class="card card--post shadow-sm mb-4"></a>
+            <div class="col">
+                <div class="col-12 mt-4">
+                    <div class="card shadow border border-primary p-3 fixed-size-div col-12">
+                        <div class="card-header bg-dark">
+                            <h2><a href="/article/<%= article._id %>">Article</a></h2>
+                        </div>
+                        <h4 class="col-lg-6 mx-auto mt-4"><%= article.title %></h4>
+                        <p><%= article.content %></p>
+                        <p>Date: <%= article.created %></p>
+                        <p>Author: <%= article.author %></p>
+                        <div class="btn-group float-right" role="group" aria-label="Article Actions">
+                            <form action="/edit/<%= article._id %>" method="get">
+                                <button type="submit" class="btn btn-outline-info mr-sm-2 p-2 m-2">Update</button>
+                            </form>
+                            <form action="/delete/<%= article._id %>" method="post">
+                                <button type="submit" class="btn btn-outline-danger p-2 m-2">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    
+<% } else { %>
+    <p>No article found.</p>
+<% } %>
+
+<%- include("partials/footer") %>
+</div>
+</body>
+</html>
+    
